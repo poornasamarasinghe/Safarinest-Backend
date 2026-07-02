@@ -3,6 +3,9 @@ const router = express.Router();
 const bookingController = require("../controllers/booking.controller");
 const { validateCreateBooking } = require("../validators/booking.validator");
 
+// GET booking summary (must come before /:id)
+router.get("/summary", bookingController.getSummary);
+
 // GET all bookings
 router.get("/", bookingController.getBookings);
 

@@ -75,6 +75,18 @@ class BookingController {
       next(error);
     }
   }
+
+  /**
+   * Get booking summary (counts by status, revenue, recent bookings)
+   */
+  async getSummary(req, res, next) {
+    try {
+      const summary = await bookingService.getBookingSummary();
+      return res.status(200).json(summary);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new BookingController();

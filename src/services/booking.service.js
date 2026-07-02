@@ -220,6 +220,13 @@ class BookingService {
     await this.getBookingById(id);
     return await bookingRepository.delete(id);
   }
+
+  /**
+   * Get summary: total/confirmed/pending/cancelled counts, revenue, and 5 most recent bookings
+   */
+  async getBookingSummary() {
+    return await bookingRepository.getSummary();
+  }
 }
 
 module.exports = new BookingService();
