@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Safari Reservation Confirmed</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f6f8f6;
+      color: #333333;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      width: 100%;
+      table-layout: fixed;
+      background-color: #f6f8f6;
+      padding: 40px 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e1e8e1;
+    }
+    .header {
+      background-color: #0b1611;
+      padding: 30px;
+      text-align: center;
+    }
+    .header h1 {
+      color: #fba260;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .greeting {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #111111;
+    }
+    .message {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #555555;
+      margin-bottom: 30px;
+    }
+    .details-box {
+      background-color: #f8faf8;
+      border: 1px solid #eef2ee;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .details-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .details-table td {
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .label {
+      font-weight: 600;
+      color: #666666;
+      width: 35%;
+    }
+    .value {
+      color: #111111;
+    }
+    .highlight {
+      color: #e98230;
+      font-weight: 750;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 35px;
+      margin-bottom: 10px;
+    }
+    .btn-cancel {
+      display: inline-block;
+      background-color: #e05252;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 12px 28px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-radius: 30px;
+      transition: background-color 0.2s ease;
+    }
+    .footer {
+      background-color: #f8faf8;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #eef2ee;
+      font-size: 12px;
+      color: #888888;
+    }
+  </style>
+</head>
+<body>
+  <table class="wrapper" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <div class="container">
+          <div class="header">
+            <h1>SAFARI NEST</h1>
+          </div>
+          <div class="content">
+            <h2 class="greeting">Hello {{guest}},</h2>
+            <p class="message">
+              Thank you for choosing SafariNest! We are delighted to confirm that your safari reservation request has been received. Our team and expert naturalists are looking forward to showing you the rich wildlife of Yala.
+            </p>
+            
+            <div class="details-box">
+              <table class="details-table">
+                <tr>
+                  <td class="label">Booking ID</td>
+                  <td class="value highlight">{{bookingId}}</td>
+                </tr>
+                <tr>
+                  <td class="label">Safari Package</td>
+                  <td class="value"><strong>{{package}}</strong></td>
+                </tr>
+                <tr>
+                  <td class="label">Date & Time</td>
+                  <td class="value">{{date}} @ {{time}}</td>
+                </tr>
+                <tr>
+                  <td class="label">Guests</td>
+                  <td class="value">{{guests}}</td>
+                </tr>
+                <tr>
+                  <td class="label">Amount Paid</td>
+                  <td class="value" style="font-weight: 700; color: #137333;">{{price}}</td>
+                </tr>
+              </table>
+            </div>
+
+            <p class="message" style="margin-bottom: 20px;">
+              If you have any special requirements, requests, or need assistance, feel free to reply directly to this email or get in touch with us at any time.
+            </p>
+            
+            <div class="button-container">
+              <a href="{{cancelUrl}}" class="btn-cancel">Cancel Reservation</a>
+            </div>
+          </div>
+          <div class="footer">
+            &copy; 2026 SafariNest Wilderness Reserves. All rights reserved.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
