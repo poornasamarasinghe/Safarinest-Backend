@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Your Safari Slot is Now Available — SafariNest</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f6f8f6;
+      color: #333333;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      width: 100%;
+      table-layout: fixed;
+      background-color: #f6f8f6;
+      padding: 40px 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e1e8e1;
+    }
+    .header {
+      background-color: #0b1611;
+      padding: 30px;
+      text-align: center;
+    }
+    .header h1 {
+      color: #fba260;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .badge-wrapper {
+      background-color: #f0fdf4;
+      border-bottom: 1px solid #bbf7d0;
+      padding: 16px 30px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background-color: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+      border-radius: 30px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .greeting {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #111111;
+    }
+    .message {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #555555;
+      margin-bottom: 30px;
+    }
+    .details-box {
+      background-color: #f8faf8;
+      border: 1px solid #eef2ee;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .details-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .details-table td {
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .label {
+      font-weight: 600;
+      color: #666666;
+      width: 35%;
+    }
+    .value {
+      color: #111111;
+    }
+    .highlight {
+      color: #e98230;
+      font-weight: 750;
+    }
+    .urgency-box {
+      background-color: #fff7ed;
+      border: 1px solid #fdba74;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+    }
+    .urgency-box p {
+      margin: 0;
+      font-size: 13px;
+      color: #9a3412;
+      line-height: 1.6;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 35px;
+      margin-bottom: 10px;
+    }
+    .btn-confirm {
+      display: inline-block;
+      background-color: #16a34a;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 14px 36px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-radius: 30px;
+    }
+    .footer {
+      background-color: #f8faf8;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #eef2ee;
+      font-size: 12px;
+      color: #888888;
+    }
+  </style>
+</head>
+<body>
+  <table class="wrapper" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <div class="container">
+          <div class="header">
+            <h1>SAFARI NEST</h1>
+          </div>
+          <div class="badge-wrapper">
+            <span class="badge">🎉 Slot Now Available!</span>
+          </div>
+          <div class="content">
+            <h2 class="greeting">Great News, {{guest}}!</h2>
+            <p class="message">
+              The safari slot you've been waiting for has just opened up! A cancellation has freed your requested time, and as the next person on our waiting list, <strong>you have first priority</strong> to claim this spot.
+            </p>
+
+            <div class="details-box">
+              <table class="details-table">
+                <tr>
+                  <td class="label">Safari Package</td>
+                  <td class="value"><strong>{{package}}</strong></td>
+                </tr>
+                <tr>
+                  <td class="label">Date &amp; Time</td>
+                  <td class="value">{{date}} @ {{time}}</td>
+                </tr>
+                <tr>
+                  <td class="label">Guests</td>
+                  <td class="value">{{guests}}</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="urgency-box">
+              <p>
+                ⚠️ <strong>Act quickly!</strong> This slot will be offered to the next person on the waiting list if not claimed promptly. Click the button below to confirm your booking now.
+              </p>
+            </div>
+
+            <div class="button-container">
+              <a href="{{confirmUrl}}" class="btn-confirm">Confirm My Slot →</a>
+            </div>
+
+            <p class="message" style="margin-top: 30px; font-size: 13px; color: #999; text-align: center;">
+              If you're no longer interested, simply ignore this email and the slot will be offered to the next guest on the waiting list.
+            </p>
+          </div>
+          <div class="footer">
+            &copy; 2026 SafariNest Wilderness Reserves. All rights reserved.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

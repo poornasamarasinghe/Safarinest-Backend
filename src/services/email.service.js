@@ -115,6 +115,102 @@ class EmailService {
       console.error("❌ Error sending booking confirmation email:", error.message);
     }
   }
+  /**
+   * Send "You've been added to the waiting list" email.
+   */
+  async sendWaitingListConfirmation(entry) {
+    try {
+      if (!this.transporter) {
+        await this._initializeTransporter();
+      }
+      if (!this.transporter) {
+        console.warn("⚠️ Email transporter not available. Skipping waiting list email.");
+        return;
+      }
+
+      const templatePath = require("path").join(__dirname, "../templates/waitingList.html");
+      const fs = require("fs");
+      if (!fs.existsSync(templatePath)) {
+        console.error(`❌ Template not found: ${templatePath}`);
+        return;
+      }
+
+      let htmlContent = fs.readFileSync(templatePath, "utf8");
+
+      htmlContent = htmlContent
+        .replace(/{{guest}}/g, entry.guest || "Valued Traveler")
+        .replace(/{{package}}/g, entry.package || "Safari Package")
+        .replace(/{{date}}/g, entry.date || "")
+        .replace(/{{time}}/g, entry.time || "")
+        .replace(/{{guests}}/g, entry.guests || "");
+
+      const fromName = process.env.EMAIL_FROM_NAME || "SafariNest Reservations";
+      const fromAddress = process.env.GMAIL_USER || "reservations@safarinest.com";
+
+      const info = await this.transporter.sendMail({
+        from: `"${fromName}" <${fromAddress}>`,
+        to: entry.email,
+        subject: `🌿 You're on the Waiting List — SafariNest`,
+        html: htmlContent,
+      });
+
+      console.log(`📋 Waiting list email sent → ${entry.email}`);
+
+      const previewUrl = require("nodemailer").getTestMessageUrl(info);
+      if (previewUrl) console.log(`🔗 Ethereal preview: ${previewUrl}`);
+    } catch (error) {
+      console.error("❌ Error sending waiting list email:", error.message);
+    }
+  }
+
+  /**
+   * Send "Your slot is now vacant — confirm to claim it" email.
+   */
+  async sendSlotVacantNotification(entry, confirmUrl) {
+    try {
+      if (!this.transporter) {
+        await this._initializeTransporter();
+      }
+      if (!this.transporter) {
+        console.warn("⚠️ Email transporter not available. Skipping slot vacant email.");
+        return;
+      }
+
+      const templatePath = require("path").join(__dirname, "../templates/promotedBooking.html");
+      const fs = require("fs");
+      if (!fs.existsSync(templatePath)) {
+        console.error(`❌ Template not found: ${templatePath}`);
+        return;
+      }
+
+      let htmlContent = fs.readFileSync(templatePath, "utf8");
+
+      htmlContent = htmlContent
+        .replace(/{{guest}}/g, entry.guest || "Valued Traveler")
+        .replace(/{{package}}/g, entry.package || "Safari Package")
+        .replace(/{{date}}/g, entry.date || "")
+        .replace(/{{time}}/g, entry.time || "")
+        .replace(/{{guests}}/g, entry.guests || "")
+        .replace(/{{confirmUrl}}/g, confirmUrl);
+
+      const fromName = process.env.EMAIL_FROM_NAME || "SafariNest Reservations";
+      const fromAddress = process.env.GMAIL_USER || "reservations@safarinest.com";
+
+      const info = await this.transporter.sendMail({
+        from: `"${fromName}" <${fromAddress}>`,
+        to: entry.email,
+        subject: `🎉 Great News! Your Safari Slot is Now Available — SafariNest`,
+        html: htmlContent,
+      });
+
+      console.log(`🎉 Slot vacant email sent → ${entry.email}`);
+
+      const previewUrl = require("nodemailer").getTestMessageUrl(info);
+      if (previewUrl) console.log(`🔗 Ethereal preview: ${previewUrl}`);
+    } catch (error) {
+      console.error("❌ Error sending slot vacant email:", error.message);
+    }
+  }
 }
 
 module.exports = new EmailService();
