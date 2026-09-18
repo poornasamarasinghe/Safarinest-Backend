@@ -6,8 +6,8 @@ const galleryRoutes = require("./routes/gallery.routes");
 const packageRoutes = require("./routes/package.routes");
 const bookingRoutes = require("./routes/booking.routes");
 const waitingListRoutes = require("./routes/waitingList.routes");
+const aiRoutes = require("./routes/ai.routes");
 const errorHandler = require("./middleware/error.middleware");
-
 
 const app = express();
 
@@ -46,9 +46,9 @@ app.use("/api/gallery", galleryRoutes);
 app.use("/api/packages", packageRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/waiting-list", waitingListRoutes);
-
+app.use("/api/ai", aiRoutes);
 
 // Centralized error handler
 app.use(errorHandler);
 
-module.exports = app;
+module.exports = app;
