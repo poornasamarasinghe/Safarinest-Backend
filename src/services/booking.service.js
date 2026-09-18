@@ -1,6 +1,7 @@
 const bookingRepository = require("../repositories/booking.repository");
 const packageRepository = require("../repositories/package.repository");
 const emailService = require("./email.service");
+const waitingListService = require("./waitingList.service");
 
 
 class BookingService {
@@ -188,6 +189,18 @@ class BookingService {
       specialRequests: bookingData.specialRequests || "",
     };
 
+    // --- Slot Conflict Check ---
+    // If the slot already has an active (Confirmed or Pending) booking, add to waiting list instead.
+    const existingBookings = await bookingRepository.getBySlot(pkgId, payload.date, payload.time);
+    if (existingBookings.length > 0) {
+      console.log(`⚠️  Slot occupied for ${pkgId} / ${payload.date} / ${payload.time}. Adding to waiting list.`);
+      const waitingEntry = await waitingListService.addToWaitingList({
+        ...payload,
+        guest: payload.guest,
+      });
+      return { ...waitingEntry, waitingList: true };
+    }
+
     const createdBooking = await bookingRepository.create(payload);
     
     // Asynchronously send confirmation email so the API call remains fast
@@ -210,7 +223,16 @@ class BookingService {
     }
 
     const booking = await this.getBookingById(id);
-    return await bookingRepository.update(id, { status });
+    const updated = await bookingRepository.update(id, { status });
+
+    // If cancelled, notify the first person on the waiting list for this slot
+    if (status === "Cancelled") {
+      waitingListService
+        .notifyFirstInQueue(booking.packageId, booking.date, booking.time)
+        .catch((err) => console.error("❌ Failed to notify waiting list after cancellation:", err));
+    }
+
+    return updated;
   }
 
   /**

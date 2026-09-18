@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>You're on the Waiting List — SafariNest</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f6f8f6;
+      color: #333333;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      width: 100%;
+      table-layout: fixed;
+      background-color: #f6f8f6;
+      padding: 40px 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e1e8e1;
+    }
+    .header {
+      background-color: #0b1611;
+      padding: 30px;
+      text-align: center;
+    }
+    .header h1 {
+      color: #fba260;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .badge-wrapper {
+      background-color: #fffbf0;
+      border-bottom: 1px solid #fde8c0;
+      padding: 16px 30px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background-color: #fef3dc;
+      color: #b45309;
+      border: 1px solid #fcd34d;
+      border-radius: 30px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .greeting {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #111111;
+    }
+    .message {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #555555;
+      margin-bottom: 30px;
+    }
+    .details-box {
+      background-color: #f8faf8;
+      border: 1px solid #eef2ee;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .details-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .details-table td {
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .label {
+      font-weight: 600;
+      color: #666666;
+      width: 35%;
+    }
+    .value {
+      color: #111111;
+    }
+    .highlight {
+      color: #b45309;
+      font-weight: 700;
+    }
+    .info-box {
+      background-color: #fffbf0;
+      border: 1px solid #fcd34d;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+    }
+    .info-box p {
+      margin: 0;
+      font-size: 13px;
+      color: #92400e;
+      line-height: 1.6;
+    }
+    .info-box strong {
+      color: #78350f;
+    }
+    .footer {
+      background-color: #f8faf8;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #eef2ee;
+      font-size: 12px;
+      color: #888888;
+    }
+  </style>
+</head>
+<body>
+  <table class="wrapper" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <div class="container">
+          <div class="header">
+            <h1>SAFARI NEST</h1>
+          </div>
+          <div class="badge-wrapper">
+            <span class="badge">⏳ Waiting List Confirmed</span>
+          </div>
+          <div class="content">
+            <h2 class="greeting">Hello {{guest}},</h2>
+            <p class="message">
+              Thank you for your interest in SafariNest! Unfortunately, the safari slot you selected is currently fully booked. However, we've added you to our priority waiting list — you're first in line!
+            </p>
+
+            <div class="details-box">
+              <table class="details-table">
+                <tr>
+                  <td class="label">Safari Package</td>
+                  <td class="value"><strong>{{package}}</strong></td>
+                </tr>
+                <tr>
+                  <td class="label">Date &amp; Time</td>
+                  <td class="value">{{date}} @ {{time}}</td>
+                </tr>
+                <tr>
+                  <td class="label">Guests</td>
+                  <td class="value">{{guests}}</td>
+                </tr>
+                <tr>
+                  <td class="label">Your Status</td>
+                  <td class="value highlight">On Waiting List</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="info-box">
+              <p>
+                <strong>What happens next?</strong><br>
+                If the current booking for this slot is cancelled, you will immediately receive an email with a link to confirm and claim your spot. Act quickly — the offer is on a first-come, first-served basis.
+              </p>
+            </div>
+
+            <p class="message" style="margin-bottom: 0;">
+              If you no longer wish to wait or have found another arrangement, you can simply ignore any future emails from us regarding this slot. We appreciate your patience and hope to have you on safari with us soon!
+            </p>
+          </div>
+          <div class="footer">
+            &copy; 2026 SafariNest Wilderness Reserves. All rights reserved.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

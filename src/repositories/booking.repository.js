@@ -66,6 +66,28 @@ class BookingRepository {
   }
 
   /**
+   * Get bookings for a specific slot (packageId + date + time) that are Confirmed or Pending.
+   * Used to check whether a slot is occupied.
+   */
+  async getBySlot(packageId, date, time) {
+    const snapshot = await this.collection
+      .where("packageId", "==", packageId)
+      .where("date", "==", date)
+      .where("time", "==", time)
+      .get();
+
+    const bookings = [];
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      // Only count active (non-cancelled) bookings as occupying the slot
+      if (data.status === "Confirmed" || data.status === "Pending") {
+        bookings.push({ id: doc.id, ...data });
+      }
+    });
+    return bookings;
+  }
+
+  /**
    * Delete a booking document
    */
   async delete(id) {
