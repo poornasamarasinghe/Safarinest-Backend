@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // The URL of your local Python FastAPI server
-const PYTHON_API_URL = 'http://127.0.0.1:8000/predict';
+const PYTHON_API_URL = process.env.PYTHON_API_URL || 'http://127.0.0.1:8000/predict';
 
 // ── Helpers to derive current context automatically ───────────────────────────
 
