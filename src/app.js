@@ -7,6 +7,7 @@ const packageRoutes = require("./routes/package.routes");
 const bookingRoutes = require("./routes/booking.routes");
 const waitingListRoutes = require("./routes/waitingList.routes");
 const aiRoutes = require("./routes/ai.routes");
+const sightingRoutes = require("./routes/sighting.routes");
 const errorHandler = require("./middleware/error.middleware");
 
 const app = express();
@@ -47,6 +48,7 @@ app.use("/api/packages", packageRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/waiting-list", waitingListRoutes);
 app.use("/api/ai", aiRoutes);
+app.use("/api/sightings", sightingRoutes);
 
 // Centralized error handler
 app.use(errorHandler);
